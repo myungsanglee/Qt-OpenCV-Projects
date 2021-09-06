@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>home.qml</file>
+        <file>image.qml</file>
+        <file>video.qml</file>
+    </qresource>
+</RCC>
