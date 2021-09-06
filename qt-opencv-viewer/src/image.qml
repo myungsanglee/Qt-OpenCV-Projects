@@ -118,7 +118,7 @@ Item {
                         text: qsTr("Open Image")
                         color: basic_bold_color
                         anchors.fill: parent
-                        font.pixelSize: parent.height * 0.5
+                        font.pixelSize: parent.height * 0.4
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
                         font.bold: img_file_btn.pressed ? true : false
