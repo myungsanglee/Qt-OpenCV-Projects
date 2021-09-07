@@ -10,12 +10,12 @@
 ## 빌드 방법
 ### Qt Creator 사용
 * Windows
-  1. qt-opencv-viewer.pro 수정
+  1. image-video-viewer.pro 수정
   2. For OpenCV in Windows 주석 해제
   3. OpenCV 경로 설정
   4. Run
 * Ubuntu
-  1. qt-opencv-viewer.pro 수정
+  1. image-video-viewer.pro 수정
   2. For OpenCV in Ubuntu 주석 해제
   3. OpenCV 경로 설정
   4. Run
