@@ -25,7 +25,7 @@ Item {
             Text {
                 id: title
                 color: basic_color
-                text: qsTr("Qt OpenCV Viewer")
+                text: qsTr("Image & Video Viewer")
                 anchors.fill: parent
                 font.pixelSize: parent.height * 0.6
                 horizontalAlignment: Text.AlignHCenter
