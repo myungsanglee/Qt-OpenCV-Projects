@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>home.qml</file>
+        <file>warp_2.qml</file>
+        <file>warp_1.qml</file>
+    </qresource>
+</RCC>

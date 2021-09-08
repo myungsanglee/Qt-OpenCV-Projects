@@ -16,6 +16,7 @@ LIBS += C:\opencv\build\x64\vc15\lib\opencv_world412.lib
 
 SOURCES += \
         main.cpp \
+        draw.cpp \
         opencv_image_provider.cpp
 
 RESOURCES += qml.qrc
@@ -32,4 +33,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    draw.h \
     opencv_image_provider.h
