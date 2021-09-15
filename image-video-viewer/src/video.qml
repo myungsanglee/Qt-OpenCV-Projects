@@ -13,17 +13,17 @@ Item {
     }
 
     Connections {
-        target: stackView
+        target: stack_view
 
         onBackPressed:
         {
-            stackView.pop()
-            opencvProvider.stop()
+            stack_view.pop()
+            opencv_image_provider.stop()
         }
     }
 
     Connections {
-        target: opencvProvider
+        target: opencv_image_provider
 
         onImageChanged:
         {
@@ -31,7 +31,7 @@ Item {
                 image.reload()
             }
             else {
-                opencvProvider.stop()
+                opencv_image_provider.stop()
                 dialog_text.text = "video finished"
                 dialog.open()
             }
@@ -40,7 +40,7 @@ Item {
         onVideoStatus:
         {
             if (status) {
-                opencvProvider.start()
+                opencv_image_provider.start()
             }
             else {
                 dialog_text.text = "fail to load video"
@@ -50,16 +50,16 @@ Item {
     }
 
     Connections {
-        target: videoFileDialog
+        target: video_file_dialog
 
         onSendVideoPath:
         {
-            opencvProvider.setVideo(filename)
+            opencv_image_provider.setVideo(path)
         }
     }
 
     Rectangle {
-        id: background
+        id: background_rect
         color: background_color
         anchors.fill: parent
 
@@ -95,7 +95,6 @@ Item {
                 anchors.fill: parent
                 fillMode: Image.PreserveAspectFit
                 cache: false
-//                source: "image://opencv/image"
                 property bool counter: false
 
                 function reload() {
@@ -144,7 +143,7 @@ Item {
                         enabled: true
 
                         onPressed: {
-                            videoFileDialog.open()
+                            video_file_dialog.open()
                         }
                     }
                 }

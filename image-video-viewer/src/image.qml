@@ -13,16 +13,16 @@ Item {
     }
 
     Connections {
-        target: stackView
+        target: stack_view
 
         onBackPressed:
         {
-            stackView.pop()
+            stack_view.pop()
         }
     }
 
     Connections {
-        target: opencvProvider
+        target: opencv_image_provider
 
         onImageChanged:
         {
@@ -37,16 +37,16 @@ Item {
     }
 
     Connections {
-        target: imageFileDialog
+        target: image_file_dialog
 
         onSendImagePath:
         {
-            opencvProvider.setImage(filename)
+            opencv_image_provider.setImage(path)
         }
     }
 
     Rectangle {
-        id: background
+        id: background_rect
         color: background_color
         anchors.fill: parent
 
@@ -82,7 +82,6 @@ Item {
                 anchors.fill: parent
                 fillMode: Image.PreserveAspectFit
                 cache: false
-//                source: "image://opencv/image"
                 property bool counter: false
 
                 function reload() {
@@ -131,7 +130,7 @@ Item {
                         enabled: true
 
                         onPressed: {
-                            imageFileDialog.open()
+                            image_file_dialog.open()
                         }
                     }
                 }

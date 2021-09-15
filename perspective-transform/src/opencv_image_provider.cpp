@@ -2,7 +2,7 @@
 
 OpencvImageProvider::OpencvImageProvider(QObject *parent) : QObject(parent), QQuickImageProvider(QQuickImageProvider::Image)
 {
-    connect(&tUpdate, &QTimer::timeout, this, &OpencvImageProvider::updateImage);
+    connect(&timer, &QTimer::timeout, this, &OpencvImageProvider::updateImage);
     warp_flag = false;
     draw_flag = false;
 }
@@ -72,12 +72,12 @@ void OpencvImageProvider::drawingDone()
 
 void OpencvImageProvider::start()
 {
-    tUpdate.start(1);
+    timer.start(1);
 }
 
 void OpencvImageProvider::stop()
 {
-    tUpdate.stop();
+    timer.stop();
     warp_flag = false;
     draw_flag = false;
 }

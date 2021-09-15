@@ -15,11 +15,11 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     /* OpencvImageProvider */
-    OpencvImageProvider *provider(new OpencvImageProvider);
+    OpencvImageProvider *opencv_image_provider(new OpencvImageProvider);
 
-    engine.rootContext()->setContextProperty("opencvProvider", provider);
+    engine.rootContext()->setContextProperty("opencv_image_provider", opencv_image_provider);
 
-    engine.addImageProvider("opencv", provider);
+    engine.addImageProvider("opencv", opencv_image_provider);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

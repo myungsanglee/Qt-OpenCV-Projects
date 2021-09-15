@@ -40,7 +40,7 @@ Window {
     }
 
     Platform.FileDialog {
-        id: imageFileDialog
+        id: image_file_dialog
         title: "Open image file"
         folder: Platform.StandardPaths.writableLocation(Platform.StandardPaths.PicturesLocation)
         fileMode: Platform.FileDialog.OpenFile
@@ -49,22 +49,22 @@ Window {
         signal sendImagePath(var path)
 
         onAccepted: {
-            console.log("You chose: " + imageFileDialog.file.toString())
-            filename = imageFileDialog.file.toString()
+            console.log("You chose: " + image_file_dialog.file.toString())
+            filename = image_file_dialog.file.toString()
             sendImagePath(filename)
 
-            imageFileDialog.folder = imageFileDialog.file
-            imageFileDialog.close()
+            image_file_dialog.folder = image_file_dialog.file
+            image_file_dialog.close()
         }
 
         onRejected: {
             console.log("Canceled")
-            imageFileDialog.close()
+            image_file_dialog.close()
         }
     }
 
     Platform.FileDialog {
-        id: videoFileDialog
+        id: video_file_dialog
         title: "Open video file"
         folder: Platform.StandardPaths.writableLocation(Platform.StandardPaths.MoviesLocation)
         fileMode: Platform.FileDialog.OpenFile
@@ -73,22 +73,22 @@ Window {
         signal sendVideoPath(var path)
 
         onAccepted: {
-            console.log("You chose: " + videoFileDialog.file.toString())
-            filename = videoFileDialog.file.toString()
+            console.log("You chose: " + video_file_dialog.file.toString())
+            filename = video_file_dialog.file.toString()
             sendVideoPath(filename)
 
-            videoFileDialog.folder = videoFileDialog.file
-            videoFileDialog.close()
+            video_file_dialog.folder = video_file_dialog.file
+            video_file_dialog.close()
         }
 
         onRejected: {
             console.log("Canceled")
-            videoFileDialog.close()
+            video_file_dialog.close()
         }
     }
 
     Controls.StackView {
-        id: stackView
+        id: stack_view
         anchors.fill: parent
         focus: true
         initialItem: "qrc:/home.qml"

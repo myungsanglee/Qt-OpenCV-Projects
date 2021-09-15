@@ -10,31 +10,31 @@ Item {
     property bool src_btn_flag: true
 
     Component.onCompleted: {
-        opencvProvider.start()
+        opencv_image_provider.start()
     }
 
     Component.onDestruction: {
-        opencvProvider.stop()
+        opencv_image_provider.stop()
         draw.reset()
     }
 
     Connections {
-        target: stackView
+        target: stack_view
 
         onBackPressed:
         {
-            stackView.pop()
+            stack_view.pop()
         }
 
         onDelPressed:
         {
             draw.reset()
-            opencvProvider.setWarpFlag(false)
+            opencv_image_provider.setWarpFlag(false)
         }
     }
 
     Connections {
-        target: opencvProvider
+        target: opencv_image_provider
 
         onImageChanged:
         {
@@ -58,7 +58,7 @@ Item {
             dst_btn_rect.visible = false
             back_btn_rect.visible = false
 
-            opencvProvider.setDrawFlag(false)
+            opencv_image_provider.setDrawFlag(false)
         }
 
         onShowResult:
@@ -68,7 +68,7 @@ Item {
     }
 
     Rectangle {
-        id: background
+        id: background_rect
         color: background_color
         anchors.fill: parent
 
@@ -191,7 +191,7 @@ Item {
                         enabled: src_btn_flag ? true : false
 
                         onPressed: {
-                            opencvProvider.setDrawFlag(true)
+                            opencv_image_provider.setDrawFlag(true)
                             src_btn_flag = false
                             mouse_flag = true
                         }
@@ -402,7 +402,7 @@ Item {
                         enabled: true
 
                         onPressed: {
-                            opencvProvider.setWarpFlag(false)
+                            opencv_image_provider.setWarpFlag(false)
                             dst_btn_rect.visible = true
                             back_btn_rect.visible = false
                             mouse_flag = true

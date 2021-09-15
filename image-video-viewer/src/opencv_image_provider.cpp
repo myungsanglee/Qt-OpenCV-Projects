@@ -2,7 +2,7 @@
 
 OpencvImageProvider::OpencvImageProvider(QObject *parent) : QObject(parent), QQuickImageProvider(QQuickImageProvider::Image)
 {
-    connect(&tUpdate, &QTimer::timeout, this, &OpencvImageProvider::updateImage);
+    connect(&timer, &QTimer::timeout, this, &OpencvImageProvider::updateImage);
 }
 
 QImage OpencvImageProvider::requestImage(const QString &id, QSize *size, const QSize &requestedSize)
@@ -75,12 +75,12 @@ void OpencvImageProvider::setVideo(QString video_path)
 
 void OpencvImageProvider::start()
 {
-    tUpdate.start(1000/fps);
+    timer.start(1000/fps);
 }
 
 void OpencvImageProvider::stop()
 {
-    tUpdate.stop();
+    timer.stop();
     if (cap.isOpened()) {
         cap.release();
     }

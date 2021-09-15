@@ -9,23 +9,23 @@ Item {
     property int type_num: 0
 
     Connections {
-        target: imageFileDialog
+        target: image_file_dialog
 
         onSendImagePath:
         {
-            opencvProvider.setImage(path)
+            opencv_image_provider.setImage(path)
         }
     }
 
     Connections {
-        target: opencvProvider
+        target: opencv_image_provider
 
         onOpenImage: {
             if (state) {
                 if (type_num == 1)
-                    stackView.push('qrc:/warp_1.qml')
+                    stack_view.push('qrc:/warp_1.qml')
                 else if (type_num == 2)
-                    stackView.push('qrc:/warp_2.qml')
+                    stack_view.push('qrc:/warp_2.qml')
             }
             else {
                 dialog_text.text = "Fail to load image. Select image file"
@@ -35,12 +35,12 @@ Item {
     }
 
     Rectangle {
-        id: background
+        id: background_rect
         color: background_color
         anchors.fill: parent
 
         Rectangle {
-            id: rectangle1
+            id: title_rect
             color: background_color
             anchors.top: parent.top
             anchors.topMargin: 10
@@ -63,9 +63,9 @@ Item {
         }
 
         Rectangle {
-            id: rectangle2
+            id: btn_rect
             color: background_color
-            anchors.top: rectangle1.bottom
+            anchors.top: title_rect.bottom
             anchors.topMargin: 10
             anchors.left: parent.left
             anchors.leftMargin: 10
@@ -75,7 +75,6 @@ Item {
             anchors.bottomMargin: 10
 
             GridLayout {
-                id: grid
                 anchors.fill: parent
                 rows: 1
                 columns: 2
@@ -109,7 +108,7 @@ Item {
 
                     onClicked: {
                         type_num = 1
-                        imageFileDialog.open()
+                        image_file_dialog.open()
                     }
                 }
 
@@ -142,7 +141,7 @@ Item {
 
                     onClicked: {
                         type_num = 2
-                        imageFileDialog.open()
+                        image_file_dialog.open()
                     }
                 }
             }

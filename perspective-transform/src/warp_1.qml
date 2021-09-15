@@ -6,32 +6,32 @@ Item {
     id: warp_1_item
 
     Component.onCompleted: {
-        opencvProvider.setDrawFlag(true)
-        opencvProvider.start()
+        opencv_image_provider.setDrawFlag(true)
+        opencv_image_provider.start()
     }
 
     Component.onDestruction: {
-        opencvProvider.stop()
+        opencv_image_provider.stop()
         draw.reset()
     }
 
     Connections {
-        target: stackView
+        target: stack_view
 
         onBackPressed:
         {
-            stackView.pop()
+            stack_view.pop()
         }
 
         onDelPressed:
         {
             draw.reset()
-            opencvProvider.setWarpFlag(false)
+            opencv_image_provider.setWarpFlag(false)
         }
     }
 
     Connections {
-        target: opencvProvider
+        target: opencv_image_provider
 
         onImageChanged:
         {
@@ -40,7 +40,7 @@ Item {
     }
 
     Rectangle {
-        id: background
+        id: background_rect
         color: background_color
         anchors.fill: parent
 
@@ -645,7 +645,7 @@ Item {
                         enabled: true
 
                         onPressed: {
-                            opencvProvider.setWarpFlag(false)
+                            opencv_image_provider.setWarpFlag(false)
                             back_btn_rect.visible = false
                             dst_btn_rect.visible = true
                         }

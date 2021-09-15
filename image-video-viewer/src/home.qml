@@ -7,12 +7,12 @@ Item {
     id: home_item
 
     Rectangle {
-        id: background
+        id: background_rect
         color: background_color
         anchors.fill: parent
 
         Rectangle {
-            id: rectangle1
+            id: title_rect
             color: background_color
             anchors.top: parent.top
             anchors.topMargin: 10
@@ -35,9 +35,9 @@ Item {
         }
 
         Rectangle {
-            id: rectangle2
+            id: btn_rect
             color: background_color
-            anchors.top: rectangle1.bottom
+            anchors.top: title_rect.bottom
             anchors.topMargin: 10
             anchors.left: parent.left
             anchors.leftMargin: 10
@@ -77,7 +77,7 @@ Item {
                         enabled: true
 
                         onPressed: {
-                            stackView.push('qrc:/image.qml')
+                            stack_view.push('qrc:/image.qml')
                         }
                     }
                 }
@@ -108,7 +108,7 @@ Item {
                         enabled: true
 
                         onPressed: {
-                            stackView.push('qrc:/video.qml')
+                            stack_view.push('qrc:/video.qml')
                         }
                     }
                 }

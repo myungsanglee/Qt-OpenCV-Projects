@@ -20,14 +20,13 @@ public:
 
     QImage requestImage(const QString &id, QSize *size, const QSize &requestedSize) override;
 
-    void updateImage();
-
     Q_INVOKABLE void setImage(QString image_path);
     Q_INVOKABLE void setVideo(QString video_path);
     Q_INVOKABLE void start();
     Q_INVOKABLE void stop();
 
 public slots:
+    void updateImage();
 
 signals:
     void imageChanged(bool status);
@@ -35,11 +34,10 @@ signals:
 
 private:
     QImage image;
+    QTimer timer;
     Mat frame;
     VideoCapture cap;
     float fps;
-    QTimer tUpdate;
-
 };
 
 #endif // OPENCVIMAGEPROVIDER_H

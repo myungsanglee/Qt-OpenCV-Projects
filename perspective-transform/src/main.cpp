@@ -16,11 +16,11 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     /* OpencvImageProvider */
-    OpencvImageProvider *provider(new OpencvImageProvider);
+    OpencvImageProvider *opencv_image_provider(new OpencvImageProvider);
 
-    engine.rootContext()->setContextProperty("opencvProvider", provider);
+    engine.rootContext()->setContextProperty("opencv_image_provider", opencv_image_provider);
 
-    engine.addImageProvider("opencv", provider);
+    engine.addImageProvider("opencv", opencv_image_provider);
 
     /* Draw */
     Draw *draw(new Draw);
@@ -28,9 +28,9 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("draw", draw);
 
     /* Connect */
-    QObject::connect(provider, &OpencvImageProvider::getDrawnImage, draw, &Draw::getDrawnImage);
-    QObject::connect(draw, &Draw::drawingDone, provider, &OpencvImageProvider::drawingDone);
-    QObject::connect(draw, &Draw::getPers, provider, &OpencvImageProvider::getPers);
+    QObject::connect(opencv_image_provider, &OpencvImageProvider::getDrawnImage, draw, &Draw::getDrawnImage);
+    QObject::connect(draw, &Draw::drawingDone, opencv_image_provider, &OpencvImageProvider::drawingDone);
+    QObject::connect(draw, &Draw::getPers, opencv_image_provider, &OpencvImageProvider::getPers);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

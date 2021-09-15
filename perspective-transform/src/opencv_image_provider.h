@@ -22,7 +22,6 @@ public:
 
     QImage requestImage(const QString &id, QSize *size, const QSize &requestedSize) override;
 
-    void updateImage();
     Q_INVOKABLE void setImage(QString image_path);
     Q_INVOKABLE void start();
     Q_INVOKABLE void stop();
@@ -32,6 +31,8 @@ public:
     Q_INVOKABLE void setDrawFlag(bool status);
 
 public slots:
+    void updateImage();
+
     /* For draw */
     void drawingDone();
     void getPers(cv::Point2f *src, cv::Point2f *dst);
@@ -46,7 +47,7 @@ signals:
 private:
     QImage image, original_image, warp_qimage;
     Mat frame, warp_image, pers;
-    QTimer tUpdate;
+    QTimer timer;
 
     /* For draw */
     bool warp_flag, draw_flag;
