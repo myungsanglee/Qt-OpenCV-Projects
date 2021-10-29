@@ -40,12 +40,28 @@ void OpencvImageProvider::setImage(QString image_path)
         return emit openImage(false);
     }
 
+    /* Undistortion of Image */
+    cv::Mat mtx = (cv::Mat1d(3, 3) << 440.861198, 0., 960.0, 0., 440.861198, 540.0, 0., 0., 1.); // (fx, 0, cx, 0, fy, cy, 0, 0, 1)
+    cv::Mat dist = (cv::Mat1d(1, 4) << -0.271749, 0.042005, 0.006296, 0.002448); // (k1, k2, p1, p2)
+    int frame_height = frame.rows;
+    int frame_width = frame.cols;
+    cv::Mat newcameramtx = cv::getOptimalNewCameraMatrix(mtx, dist, cv::Size(frame_width, frame_height), 1, cv::Size(frame_width, frame_height));
+    cv::Mat mapx, mapy;
+    cv::initUndistortRectifyMap(mtx, dist, cv::Mat(), newcameramtx, cv::Size(frame_width, frame_height), CV_32FC1, mapx, mapy);
+
+//    cv::Mat newcameramtx;
+//    cv::fisheye::estimateNewCameraMatrixForUndistortRectify(mtx, dist, cv::Size(frame_width, frame_height), cv::Matx33d::eye(), newcameramtx, 1);
+//    cv::fisheye::undistortImage(frame, frame, mtx, dist, newcameramtx);
+
+    // undistortion
+    cv::remap(frame, frame, mapx, mapy, cv::INTER_LINEAR);
+//    cv::undistort(frame, frame, mtx, dist, newcameramtx);
+
     /* Convert OpenCV to QImage */
     image = QImage(frame.data, frame.cols, frame.rows, QImage::Format_RGB888).rgbSwapped();
     original_image = image.copy();
     return emit openImage(true);
 }
-
 void OpencvImageProvider::updateImage()
 {
     image = original_image;
