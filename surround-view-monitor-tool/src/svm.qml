@@ -65,8 +65,10 @@ Item {
             id: image_rect
             color: background_color
             anchors.top: title_rect.bottom
+            anchors.topMargin: 10
             anchors.left: parent.left
             anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
             width: parent.width * 0.8
 
             Image {
