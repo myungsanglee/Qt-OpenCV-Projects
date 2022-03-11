@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>home.qml</file>
-        <file>svm.qml</file>
-    </qresource>
-</RCC>
